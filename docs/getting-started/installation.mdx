@@ -1,0 +1,87 @@
+---
+sidebar_position: 0
+description: How to install Mapperly.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Conditional from '@site/src/components/Conditional';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+# Installation
+
+## Add the NuGet Package to your project
+
+All you need to do, to install Mapperly is to add a NuGet reference pointing to the package [`Riok.Mapperly`](https://www.nuget.org/packages/Riok.Mapperly).
+
+<Tabs>
+  <TabItem value="csproj" label="PackageReference" default>
+      <CodeBlock language="xml">{`<PackageReference Include="Riok.Mapperly" Version="${useDocusaurusContext().siteConfig.customFields.mapperlyVersion}" ExcludeAssets="runtime" PrivateAssets="all" />`}</CodeBlock>
+  </TabItem>
+<TabItem value="dotnet-cli" label=".NET CLI">
+
+```bash
+dotnet add package Riok.Mapperly
+```
+
+:::info
+To remove the runtime dependency of Mapperly add
+`ExcludeAssets="runtime"` and `PrivateAssets="all"`
+to the resulting `PackageReference`.
+:::
+
+</TabItem>
+<TabItem value="pkg-manager" label="Package Manager">
+
+```powershell
+Install-Package Riok.Mapperly
+```
+
+:::info
+To remove the runtime dependency of Mapperly add
+`ExcludeAssets="runtime"` and `PrivateAssets="all"`
+to the resulting `PackageReference`.
+:::
+
+</TabItem>
+</Tabs>
+
+<Conditional condition={!useDocusaurusContext().siteConfig.customFields.environment.stable}>
+
+:::warning
+This is a prerelease version of Mapperly and is not subject to semantic release.
+The API may break in any prerelease.
+Checkout the latest stable version [here](https://mapperly.riok.app).
+:::
+
+</Conditional>
+
+### Preserving the attributes at runtime
+
+Mapperly removes the attribute references at compile time by default (they have the `ConditionalAttribute`).
+If you want to preserve the attribute references at runtime
+you can set the MSBuild variable `MapperlyAbstractionsScope` to `runtime`.
+
+```xml
+<PropertyGroup>
+  <MapperlyAbstractionsScope>runtime</MapperlyAbstractionsScope>
+</PropertyGroup>
+```
+
+:::info
+When preserving the attribute usages, the Mapperly package reference needs to include the runtime assets.  
+Make sure `ExcludeAssets` on the `PackageReference` does not include `runtime`.
+:::
+
+:::info
+`MapperlyAbstractionsScope` only works in projects referencing `Riok.Mapperly` directly.
+Alternatively you can set a constant `MAPPERLY_ABSTRACTIONS_SCOPE_RUNTIME`:
+
+```xml
+<PropertyGroup>
+  <DefineConstants>$(DefineConstants);MAPPERLY_ABSTRACTIONS_SCOPE_RUNTIME</DefineConstants>
+</PropertyGroup>
+```
+
+:::

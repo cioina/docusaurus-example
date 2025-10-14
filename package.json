@@ -1,0 +1,63 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "ts-node prebuild.ts",
+    "prestart": "ts-node prebuild.ts",
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "fix": "eslint --fix src && prettier --ignore-path .gitignore --write . && stylelint 'src/**/*.css' --fix",
+    "lint": "prettier --ignore-path .gitignore --check . && tsc && eslint --ignore-path .gitignore src && stylelint 'src/**/*.css'"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.9.1",
+    "@docusaurus/plugin-ideal-image": "3.9.1",
+    "@docusaurus/preset-classic": "3.9.1",
+    "@easyops-cn/docusaurus-search-local": "0.52.1",
+    "@mdx-js/react": "3.1.1",
+    "clsx": "2.1.1",
+    "docusaurus-plugin-sass": "0.2.6",
+    "prism-react-renderer": "2.4.1",
+    "raw-loader": "4.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@docusaurus/eslint-plugin": "3.9.1",
+    "@docusaurus/module-type-aliases": "3.9.1",
+    "@docusaurus/tsconfig": "3.9.1",
+    "@types/react": "19.1.2",
+    "@typescript-eslint/eslint-plugin": "8.45.0",
+    "hast-util-to-html": "9.0.5",
+    "marked": "11.2.0",
+    "prettier": "3.6.2",
+    "stylelint": "16.25.0",
+    "stylelint-config-standard": "39.0.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5",
+    "unist-util-visit": "5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=20.12.2"
+  }
+}
