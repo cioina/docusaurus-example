@@ -29,13 +29,15 @@ async function createConfig() {
     baseUrl: process.env.DOCUSAURUS_BASE_URL || '/',
     trailingSlash: true,
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'throw',
     favicon: 'img/logo.svg',
     organizationName: 'riok',
     projectName: 'mapperly',
     // Enable mermaid diagrams
     markdown: {
-      mermaid: true,
+        mermaid: true,
+        hooks: {
+            onBrokenMarkdownLinks: 'throw',
+        }
     },
     i18n: {
       defaultLocale: 'en',
