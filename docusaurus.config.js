@@ -33,13 +33,13 @@ async function createConfig() {
     favicon: 'img/logo.svg',
     organizationName: 'riok',
     projectName: 'mapperly',
-      // Enable mermaid diagrams
-      markdown: {
-          mermaid: true,
+    // Enable mermaid diagrams
+    markdown: {
+      mermaid: true,
       hooks: {
         onBrokenMarkdownLinks: 'throw',
         onBrokenMarkdownImages: 'throw',
-      },
+       },
     },
     i18n: {
       defaultLocale: 'en',
@@ -60,7 +60,7 @@ async function createConfig() {
         }),
       ],
     ],
-          // Add mermaid theme
+      // Add mermaid theme
       themes: ['@docusaurus/theme-mermaid'],
       themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -195,14 +195,17 @@ async function createConfig() {
           theme: themes.github,
           darkTheme: themes.dracula,
           additionalLanguages: ['csharp', 'powershell', 'editorconfig', 'bash'],
-            },
-            // Mermaid diagram configuration
-            mermaid: {
-                theme: { light: 'neutral', dark: 'forest' },
-                options: {
-                    maxTextSize: 9999,
-                },
-            },
+        },
+        // Mermaid diagram configuration
+        mermaid: {
+          theme: { 
+            light: 'neutral', 
+            dark: 'forest' 
+          },
+          options: {
+              maxTextSize: 9999,
+          },
+        },
       }),
     plugins: [
       [
